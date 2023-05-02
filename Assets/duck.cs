@@ -48,10 +48,11 @@ public class duck : MonoBehaviour
     }
     public void Move(Vector3 direction)
     {
-        transform.DOMoveX(transform.position.x + direction.x*6f, durasi);
-        transform.DOMoveZ(transform.position.z + direction.z*6f, durasi);
-        var seq = DOTween.Sequence();
-        seq.Append(transform.DOMoveY(jumpHeight, durasi));
-        seq.Append(transform.DOMoveY(0, durasi));
+        // transform.DOMoveX(transform.position.x + direction.x*6f, durasi);
+        // transform.DOMoveZ(transform.position.z + direction.z*6f, durasi);
+        // var seq = DOTween.Sequence();
+        // seq.Append(transform.DOMoveY(jumpHeight, durasi));
+        // seq.Append(transform.DOMoveY(0, durasi));
+        transform.DOJump(transform.position + direction*6f, jumpHeight,1,durasi);
     }
 }
