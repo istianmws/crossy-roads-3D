@@ -532,8 +532,9 @@ MonoBehaviour:
   roadPreFab: {fileID: 6889187278503008803, guid: 0050a83911f4bbc4bb9b2ebf2e43896e, type: 3}
   initialGrassCount: 5
   horizontalSize: 9
-  backRelativePos: 5
-  treeProbability: 0.521
+  backViewDistance: -5
+  forwardViewDistance: 15
+  treeProbability: 0.3
 --- !u!4 &667768601
 Transform:
   m_ObjectHideFlags: 0
@@ -972,8 +973,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -986,11 +987,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.6
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.53419
+  orthographic size: 24
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1013,14 +1014,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.067421176, y: 0.92218655, z: -0.33140847, w: 0.18760282}
-  m_LocalPosition: {x: -3.9715242, y: 6.420915, z: 6.5661783}
+  m_LocalRotation: {x: 0.06121856, y: 0.9320529, z: -0.30371302, w: 0.18785146}
+  m_LocalPosition: {x: -28.9, y: 61.21762, z: 55.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 36.3, y: 157.8, z: 0}
 --- !u!1 &1096503059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,7 +1455,7 @@ BoxCollider:
   m_GameObject: {fileID: 1418562419}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
