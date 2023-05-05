@@ -23,21 +23,21 @@ public class duck : MonoBehaviour
 
         Vector3 direction = Vector3.zero;
         
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            direction += Vector3.forward;
+            direction -= Vector3.forward;
         }
-        else if(Input.GetKeyDown(KeyCode.S))
+        else if(Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.DownArrow))
         {
-            direction += Vector3.back;
+            direction -= Vector3.back;
         }
-        else if(Input.GetKeyDown(KeyCode.D))
+        else if(Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow))
         { 
-            direction += Vector3.right;
+            direction -= Vector3.right;
         }
-        else if(Input.GetKeyDown(KeyCode.A))
+        else if(Input.GetKeyDown(KeyCode.A)|| Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            direction += Vector3.left;
+            direction -= Vector3.left;
         }
 
         if (direction == Vector3.zero)
@@ -54,5 +54,6 @@ public class duck : MonoBehaviour
         // seq.Append(transform.DOMoveY(jumpHeight, durasi));
         // seq.Append(transform.DOMoveY(0, durasi));
         transform.DOJump(transform.position + direction*6f, jumpHeight,1,durasi);
+        transform.forward = -direction;
     }
 }
