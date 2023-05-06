@@ -25,11 +25,11 @@ public class Grass : Terrain
             emptyPosition.Add(i);
         }
 
-        Debug.Log(string.Join(",",emptyPosition));
+        // Debug.Log(string.Join(",",emptyPosition));
         
         for (int i = 0; i<treeCount; i++)
         {
-            Debug.Log(i + string.Join(",",emptyPosition));
+            // Debug.Log(i + string.Join(",",emptyPosition));
             var randomIndex = Random.Range(0,emptyPosition.Count);
             var pos = 6*emptyPosition[randomIndex];
 
