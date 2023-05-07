@@ -6,9 +6,12 @@ using UnityEngine.Events;
 
 public class Duck : MonoBehaviour
 {
-    [SerializeField] bool isMoving;
-    [SerializeField, Range(0,1)]  float durasi;
-    [SerializeField, Range(0,2)]  float jumpHeight;
+    // [SerializeField] bool isMoving;
+    [SerializeField, Range(0,1)] float durasi;
+    [SerializeField, Range(0,6)] float jumpHeight;
+    [SerializeField] int leftMoveLimit;
+    [SerializeField] int rightMoveLimit;
+    [SerializeField] int backMoveLimit;
     private Vector2 touchStartPosition;
     public UnityEvent<Vector3> OnJumpEnd;
 
@@ -103,16 +106,32 @@ public class Duck : MonoBehaviour
         // var seq = DOTween.Sequence();
         // seq.Append(transform.DOMoveY(jumpHeight, durasi));
         // seq.Append(transform.DOMoveY(0, durasi));
+        
+        var targetPosition = transform.position + direction*6;
+        if (targetPosition.x < leftMoveLimit || 
+            targetPosition.x > rightMoveLimit ||
+            targetPosition.z > backMoveLimit ||
+            Tree.AllPosition.Contains(targetPosition) )
+        {
+            targetPosition = transform.position;
+        }
+
         transform
             .DOJump
             (
-                transform.position + direction*6f, 
+                targetPosition, 
                 jumpHeight,
                 1,
                 durasi
             )
             .onComplete = BroadCastPositionOnJumpEnd;
         transform.forward = -direction;
+    }
+    public void UpdateMoveLimit(int horizontalSize, int backLimit)
+    {
+        leftMoveLimit = -(horizontalSize/2)*6;
+        rightMoveLimit = (horizontalSize/2)*6;
+        backMoveLimit = -(backLimit*6);
     }
     private void BroadCastPositionOnJumpEnd()
     {
