@@ -6,13 +6,11 @@ using UnityEngine.Events;
 public class PlayManager : MonoBehaviour
 {
     // [SerializeField] List<Terrain> terrainPrefabList;
-    [SerializeField] Duck duck;
     [SerializeField] List<Terrain> terrainList;
     [SerializeField] int initialGrassCount =  5;
     [SerializeField] int horizontalSize;
     [SerializeField] int backViewDistance = -7;
     [SerializeField] int forwardViewDistance = 15;
-    [SerializeField, Range(0,1)] float treeProbability;
     Dictionary<int,Terrain> activeTerrainDict = new Dictionary<int, Terrain>(20);
     [SerializeField] private int travelDistance;
     public UnityEvent<int,int> OnUpdateTerrainLimit;
@@ -43,6 +41,7 @@ public class PlayManager : MonoBehaviour
             var terrain = SpawnRandomTerrain(zPos);  
 
         }
+        OnUpdateTerrainLimit.Invoke(horizontalSize, travelDistance+backViewDistance);
         // SpawnRandomTerrain(0);
     }
 
@@ -108,6 +107,6 @@ public class PlayManager : MonoBehaviour
         var spawnPos = travelDistance/6 -1 + forwardViewDistance;
         SpawnRandomTerrain(spawnPos);
 
-        OnUpdateTerrainLimit.Invoke(horizontalSize, travelDistance+backViewDistance);
+        OnUpdateTerrainLimit.Invoke(horizontalSize, travelDistance/6+backViewDistance);
     }
 }
