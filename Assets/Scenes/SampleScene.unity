@@ -265,9 +265,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f768e31a2aa0a4ca8549247baf6aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoving: 0
   durasi: 0.22
   jumpHeight: 1.8
+  leftMoveLimit: 0
+  rightMoveLimit: 0
+  backMoveLimit: 0
   OnJumpEnd:
     m_PersistentCalls:
       m_Calls:
@@ -567,7 +569,19 @@ MonoBehaviour:
   travelDistance: 0
   OnUpdateTerrainLimit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 74760192}
+        m_TargetAssemblyTypeName: Duck, Assembly-CSharp
+        m_MethodName: UpdateMoveLimit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &667768601
 Transform:
   m_ObjectHideFlags: 0

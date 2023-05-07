@@ -49,4 +49,4 @@ MonoBehaviour:
   - {fileID: 212947089202995381, guid: 16edf87e91e809a42af3c60393c6bba9, type: 3}
   - {fileID: 53008206173193718, guid: c72241637b7e06049a6fb489a1a69c45, type: 3}
   - {fileID: 53008206173193718, guid: 7bf5776e3394bfc45acbd5c641b21e81, type: 3}
-  treeProbability: 0.3
+  treeProbability: 0.33
