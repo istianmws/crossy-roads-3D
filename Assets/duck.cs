@@ -20,7 +20,7 @@ public class Duck : MonoBehaviour
 
     void Update()
     {
-        if (isMoveable == true)
+        if (isMoveable == false)
         {
             return;
         }
@@ -140,13 +140,15 @@ public class Duck : MonoBehaviour
     {
         if (other.CompareTag("Car"))
         {
-            if (isMoveable == true)
+            if (transform.localScale.y == 0.19f)
                 return;
                 
             transform.DOScaleY(0.19f,0.2f);
             transform.DOScaleX(2f,0.2f);
-            isMoveable = true;
-            Invoke("Die", 3);
+            transform.DOScaleZ(2f,0.2f);
+            
+            isMoveable = false;
+            Invoke("Die", 2);
         }
         else if (other.CompareTag("Coin"))
         {

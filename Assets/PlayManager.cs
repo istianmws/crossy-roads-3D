@@ -41,11 +41,8 @@ public class PlayManager : MonoBehaviour
         for (int zPos=initialGrassCount; zPos<forwardViewDistance;zPos++)
         {
             var terrain = SpawnRandomTerrain(zPos);  
-
         }
         OnUpdateTerrainLimit.Invoke(horizontalSize, travelDistance+backViewDistance);
-        
-        // timer = initialTimer;
     }
     
     private Terrain SpawnRandomTerrain(int zPos)
