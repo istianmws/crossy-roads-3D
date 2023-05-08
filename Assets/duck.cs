@@ -14,16 +14,15 @@ public class Duck : MonoBehaviour
     [SerializeField] int backMoveLimit;
     private Vector2 touchStartPosition;
     public UnityEvent<Vector3> OnJumpEnd;
+    public UnityEvent<int> OnGetCoin;
+    private bool isDie = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        if (isDie == true)
+        {
+            return;
+        }
         if (DOTween.IsTweening(transform))
         {
             return;
@@ -136,5 +135,29 @@ public class Duck : MonoBehaviour
     private void BroadCastPositionOnJumpEnd()
     {
         OnJumpEnd.Invoke(transform.position);
+    }
+    private void OnTriggerEnter(Collider other) 
+    {
+        if (other.CompareTag("Car"))
+        {
+            if (isDie == true)
+                return;
+                
+            transform.DOScaleY(0.19f,0.2f);
+            transform.DOScaleX(2f,0.2f);
+            isDie = true;
+        }
+        else if (other.CompareTag("Coin"))
+        {
+            var coin = other.GetComponent<Coin>();
+            OnGetCoin.Invoke(coin.Value);
+            coin.Collected();
+        }
+    }
+    private void OnTriggerStay(Collider other) {
+         Debug.Log(message: "saty");
+    }
+    private void OnTriggerExit(Collider other) {
+         Debug.Log("exit");
     }
 }
