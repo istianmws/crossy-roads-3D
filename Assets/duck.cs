@@ -15,11 +15,12 @@ public class Duck : MonoBehaviour
     private Vector2 touchStartPosition;
     public UnityEvent<Vector3> OnJumpEnd;
     public UnityEvent<int> OnGetCoin;
-    private bool isDie = false;
+    public UnityEvent OnDie;
+    private bool isMoveable = false;
 
     void Update()
     {
-        if (isDie == true)
+        if (isMoveable == true)
         {
             return;
         }
@@ -140,12 +141,13 @@ public class Duck : MonoBehaviour
     {
         if (other.CompareTag("Car"))
         {
-            if (isDie == true)
+            if (isMoveable == true)
                 return;
                 
             transform.DOScaleY(0.19f,0.2f);
             transform.DOScaleX(2f,0.2f);
-            isDie = true;
+            isMoveable = true;
+            Invoke("Die", 3);
         }
         else if (other.CompareTag("Coin"))
         {
@@ -153,11 +155,18 @@ public class Duck : MonoBehaviour
             OnGetCoin.Invoke(coin.Value);
             coin.Collected();
         }
+        else if (other.CompareTag("Eagle"))
+        {
+            if (this.transform != other.transform)
+            {
+                this.transform.SetParent(other.transform);
+                Invoke("Die", 3);
+            }
+        }
     }
-    private void OnTriggerStay(Collider other) {
-         Debug.Log(message: "saty");
+    private void Die()
+    {
+        OnDie.Invoke();
     }
-    private void OnTriggerExit(Collider other) {
-         Debug.Log("exit");
-    }
+    
 }
