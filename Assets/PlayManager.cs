@@ -5,22 +5,21 @@ using UnityEngine.Events;
 
 public class PlayManager : MonoBehaviour
 {
-    // [SerializeField] List<Terrain> terrainPrefabList;
     [SerializeField] List<Terrain> terrainList;
     [SerializeField] List<Coin> coinList;
     [SerializeField] int initialGrassCount =  5;
     [SerializeField] int horizontalSize;
     [SerializeField] int backViewDistance = -7;
     [SerializeField] int forwardViewDistance = 15;
+    [SerializeField] float initialTimer;
     Dictionary<int,Terrain> activeTerrainDict = new Dictionary<int, Terrain>(20);
     [SerializeField] private int travelDistance;
     [SerializeField] private int coin;
     public UnityEvent<int,int> OnUpdateTerrainLimit;
     public UnityEvent<int> OnScoreUpdate;
+    
     private void Start()
     {
-        
-
         //terrain backward
         for (int zPos=backViewDistance; zPos<initialGrassCount;zPos++)
         {
@@ -45,9 +44,10 @@ public class PlayManager : MonoBehaviour
 
         }
         OnUpdateTerrainLimit.Invoke(horizontalSize, travelDistance+backViewDistance);
-        // SpawnRandomTerrain(0);
+        
+        // timer = initialTimer;
     }
-
+    
     private Terrain SpawnRandomTerrain(int zPos)
     {
         Terrain terrainCheck = null;

@@ -101,12 +101,6 @@ public class Duck : MonoBehaviour
     }
     public void Move(Vector3 direction)
     {
-        // transform.DOMoveX(transform.position.x + direction.x*6f, durasi);
-        // transform.DOMoveZ(transform.position.z + direction.z*6f, durasi);
-        // var seq = DOTween.Sequence();
-        // seq.Append(transform.DOMoveY(jumpHeight, durasi));
-        // seq.Append(transform.DOMoveY(0, durasi));
-        
         var targetPosition = transform.position + direction*6;
         if (targetPosition.x < leftMoveLimit || 
             targetPosition.x > rightMoveLimit ||
@@ -126,6 +120,11 @@ public class Duck : MonoBehaviour
             )
             .onComplete = BroadCastPositionOnJumpEnd;
         transform.forward = -direction;
+        
+    }
+    public void SetMoveable(bool value)
+    {
+        isMoveable = value;
     }
     public void UpdateMoveLimit(int horizontalSize, int backLimit)
     {
@@ -160,7 +159,7 @@ public class Duck : MonoBehaviour
             if (this.transform != other.transform)
             {
                 this.transform.SetParent(other.transform);
-                Invoke("Die", 3);
+                Invoke("Die", 2);
             }
         }
     }
