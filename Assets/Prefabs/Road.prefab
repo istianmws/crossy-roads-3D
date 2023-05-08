@@ -50,5 +50,5 @@ MonoBehaviour:
   - {fileID: -2766273463869248715, guid: 5f327a8d09a564c45abad899e0b59dc7, type: 3}
   - {fileID: -2766273463869248715, guid: 360cdeb30f5cdf141a3ffade1aa17aaa, type: 3}
   - {fileID: -2766273463869248715, guid: 74160d1eec6e0b64f8c70fcfe20dab42, type: 3}
-  minCarSpawnInterval: -4.61
-  maxCarSpawnInterval: 7.25
+  minCarSpawnInterval: 1
+  maxCarSpawnInterval: 3
