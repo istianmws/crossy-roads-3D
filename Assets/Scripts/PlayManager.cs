@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayManager : MonoBehaviour
 {
@@ -44,7 +45,13 @@ public class PlayManager : MonoBehaviour
         }
         OnUpdateTerrainLimit.Invoke(horizontalSize, travelDistance+backViewDistance);
     }
-    
+    public void LoadScene(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
+    public void Retry(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     private Terrain SpawnRandomTerrain(int zPos)
     {
         Terrain terrainCheck = null;
