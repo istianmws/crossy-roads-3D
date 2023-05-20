@@ -101,7 +101,7 @@ public class Duck : MonoBehaviour
     }
     public void Move(Vector3 direction)
     {
-        AudioManager.instance.PlayJump();
+        // AudioManager.instance.PlayJump();
         
         var targetPosition = transform.position + direction*6;
         if (targetPosition.x < leftMoveLimit || 
@@ -145,7 +145,7 @@ public class Duck : MonoBehaviour
             
             if (transform.localScale.y == 0.19f)
                 return;
-            AudioManager.instance.PlayDie();
+            // AudioManager.instance.PlayDie();
             transform.DOScaleY(0.19f,0.2f);
             transform.DOScaleX(2f,0.2f);
             transform.DOScaleZ(2f,0.2f);
@@ -155,14 +155,14 @@ public class Duck : MonoBehaviour
         }
         else if (other.CompareTag("Coin"))
         {
-            AudioManager.instance.PlayCoin();
+            // AudioManager.instance.PlayCoin();
             var coin = other.GetComponent<Coin>();
             OnGetCoin.Invoke(coin.Value);
             coin.Collected();
         }
         else if (other.CompareTag("Eagle"))
         {
-            AudioManager.instance.PlayEagle();
+            // AudioManager.instance.PlayEagle();
             if (this.transform != other.transform)
             {
                 this.transform.SetParent(other.transform);

@@ -150,4 +150,5 @@ public class PlayManager : MonoBehaviour
 
         OnUpdateTerrainLimit.Invoke(horizontalSize, travelDistance/6+backViewDistance);
     }
+    
 }
